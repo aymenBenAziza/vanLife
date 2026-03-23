@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { Navbar } from '../../components/Navbar.jsx';
 import { useAuth } from './useAuth.js';
 
 export const Login = () => {
@@ -32,9 +33,11 @@ export const Login = () => {
   };
 
   return (
-    <div className="auth-shell">
-      <div className="auth-layout">
-        <section className="auth-hero">
+    <>
+      <Navbar publicMode />
+      <div className="auth-shell">
+        <div className="auth-layout">
+          <section className="auth-hero">
           <span className="eyebrow">VanLife Platform</span>
           <h1>Run camper van rentals with one clean workspace.</h1>
           <p>
@@ -55,9 +58,9 @@ export const Login = () => {
               <span>Ready to connect the next rental modules cleanly.</span>
             </div>
           </div>
-        </section>
+          </section>
 
-        <form className="auth-card" onSubmit={handleSubmit}>
+          <form className="auth-card" onSubmit={handleSubmit}>
           <div className="auth-card-header">
             <span className="auth-badge">Sign in</span>
             <h2>Welcome back</h2>
@@ -82,8 +85,9 @@ export const Login = () => {
           <span className="auth-footer">
             No account yet? <Link to="/signup">Create one</Link>
           </span>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

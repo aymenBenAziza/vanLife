@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard.jsx';
 import { HomePage } from '../pages/Home.jsx';
 import { UnauthorizedPage } from '../pages/Unauthorized.jsx';
+import { VehicleDocumentsPage } from '../pages/VehicleDocumentsPage.jsx';
+import { VehiclesPage } from '../pages/VehiclesPage.jsx';
 import { GuestRoute } from '../modules/users/GuestRoute.jsx';
 import { Login } from '../modules/users/Login.jsx';
 import { PrivateRoute } from '../modules/users/PrivateRoute.jsx';
@@ -37,6 +39,22 @@ export const router = createBrowserRouter([
       <PrivateRoute>
         <Profile />
       </PrivateRoute>
+    ),
+  },
+  {
+    path: '/fleet',
+    element: (
+      <RoleRoute allowedRoles={['admin', 'staff']}>
+        <VehiclesPage />
+      </RoleRoute>
+    ),
+  },
+  {
+    path: '/fleet/documents',
+    element: (
+      <RoleRoute allowedRoles={['admin', 'staff']}>
+        <VehicleDocumentsPage />
+      </RoleRoute>
     ),
   },
   {
